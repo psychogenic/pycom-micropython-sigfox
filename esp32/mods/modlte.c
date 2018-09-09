@@ -159,7 +159,7 @@ static bool lte_check_attached(void) {
     } else {
         lte_push_at_command("AT+CEREG?", LTE_RX_TIMEOUT_MIN_MS);
         if (((pos = strstr(modlte_rsp.data, "+CEREG: 2,1,")) || (pos = strstr(modlte_rsp.data, "+CEREG: 2,5,")))
-            && (strlen(pos) >= 31) && pos[30] == '7') {
+            && (strlen(pos) >= 31) && (pos[30] == '7' || pos[30] == '9')) {
             if (lteppp_get_state() != E_LTE_PPP) {
                 lteppp_set_state(E_LTE_ATTACHED);
             }
@@ -398,6 +398,8 @@ STATIC mp_obj_t lte_attach(mp_uint_t n_args, const mp_obj_t *pos_args, mp_map_t 
                 lte_push_at_command("AT!=\"RRC::addScanBand band=3\"", LTE_RX_TIMEOUT_MIN_MS);
             } else if (band == 4) {
                 lte_push_at_command("AT!=\"RRC::addScanBand band=4\"", LTE_RX_TIMEOUT_MIN_MS);
+            } else if (band == 8) {
+                lte_push_at_command("AT!=\"RRC::addScanBand band=8\"", LTE_RX_TIMEOUT_MIN_MS);
             } else if (band == 12) {
                 lte_push_at_command("AT!=\"RRC::addScanBand band=12\"", LTE_RX_TIMEOUT_MIN_MS);
             } else if (band == 13) {
