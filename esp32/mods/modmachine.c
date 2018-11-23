@@ -65,6 +65,7 @@
 #include "machspi.h"
 #include "machpwm.h"
 #include "machrtc.h"
+#include "machtouchpad.h"
 #include "mperror.h"
 #include "mpsleep.h"
 #include "pybadc.h"
@@ -365,6 +366,7 @@ STATIC const mp_rom_map_elem_t machine_module_globals_table[] = {
     { MP_OBJ_NEW_QSTR(MP_QSTR_WDT),                     (mp_obj_t)&mach_wdt_type },
     { MP_OBJ_NEW_QSTR(MP_QSTR_CAN),                     (mp_obj_t)&mach_can_type },
     { MP_OBJ_NEW_QSTR(MP_QSTR_RMT),                     (mp_obj_t)&mach_rmt_type },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_TouchPad),                (mp_obj_t)&mach_touchpad_type },
 
     // constants
     { MP_OBJ_NEW_QSTR(MP_QSTR_PWRON_RESET),         MP_OBJ_NEW_SMALL_INT(MPSLEEP_PWRON_RESET) },

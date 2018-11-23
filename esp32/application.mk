@@ -127,6 +127,7 @@ APP_MODS_SRC_C = $(addprefix mods/,\
 	moduqueue.c \
 	moduhashlib.c \
 	moducrypto.c \
+	machtouchpad.c \
 	machtimer.c \
 	machtimer_alarm.c \
 	machtimer_chrono.c \
